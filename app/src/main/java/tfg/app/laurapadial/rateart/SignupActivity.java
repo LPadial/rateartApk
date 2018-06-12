@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,98 +23,371 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import android.text.TextWatcher;
+import android.text.Editable;
+import android.text.TextUtils;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
-class SignupActivity extends AppCompatActivity{
+public class SignupActivity extends AppCompatActivity{
 
-    private EditText name;
-    private EditText surname;
-    private EditText nick;
-    private EditText email;
-    private EditText password1;
-    private EditText password2;
-    private TextView loginErrorMsg;
-    private Button btnRegister;
-    private RadioButton rbPrivacity;
-    private TextView tvError;
-    private ConstraintLayout layout;
-    private SharedPreferences sharedPref;
-    private String baseUrl;
-    private String url;
+
+    //Elements layout activity_signup
+    EditText name;
+    EditText surname;
+    EditText nick;
+    EditText email;
+    EditText password1;
+    EditText password2;
+
+    Button btnRegister;
+    RadioButton rbPrivacity;
+    ConstraintLayout layout;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
+    String baseUrl;
+    String url;
     RequestQueue requestQueue;
 
+    TextInputLayout ti_name;
+    TextInputLayout ti_surname;
+    TextInputLayout ti_nick;
+    TextInputLayout ti_email;
+    TextInputLayout ti_password;
+    TextInputLayout ti_password2;
+
+
+
+    //Method OnCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        this.name = (EditText) findViewById(R.id.ti_name);
-        this.surname = (EditText)findViewById(R.id.ti_surname);
-        this.nick = (EditText) findViewById(R.id.ti_nickname);
-        this.email = (EditText) findViewById(R.id.ti_email);
-        this.password1 = (EditText)findViewById(R.id.ti_password1);
-        this.password2 = (EditText) findViewById(R.id.ti_password2);
-        this.btnRegister = (Button) findViewById(R.id.bt_register);
-        this.rbPrivacity = (RadioButton) findViewById(R.id.rb_privacidad);
-        this.tvError = (TextView) findViewById(R.id.tv_error);
-        this.layout = (ConstraintLayout)findViewById(R.id.layout);
+        //Declaration attributes
+        //EditText
+        this.name = findViewById(R.id.et_name);
+        this.surname = findViewById(R.id.et_surname);
+        this.nick = findViewById(R.id.et_nickname);
+        this.email = findViewById(R.id.et_email);
+        this.password1 = findViewById(R.id.et_password);
+        this.password2 = findViewById(R.id.et_password2);
 
-        if(password1 != password2){
-            tvError.setText("Las contraseñas deben ser iguales");
+        //TextInput
+        this.ti_name = findViewById(R.id.ti_name);
+        this.ti_surname = findViewById(R.id.ti_surname);
+        this.ti_nick = findViewById(R.id.ti_nickname);
+        this.ti_email = findViewById(R.id.ti_email);
+        this.ti_password = findViewById(R.id.ti_password);
+        this.ti_password2 = findViewById(R.id.ti_password2);
+
+
+        this.btnRegister = findViewById(R.id.bt_register);
+        this.rbPrivacity = findViewById(R.id.rb_privacidad);
+        this.layout = findViewById(R.id.layout);
+
+        //Listener name
+        name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateEditName(s);
+            }
+        });
+
+
+        //Listener surname
+        surname.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateEditSurname(s);
+            }
+        });
+
+        //Listener nick
+        nick.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateEditNick(s);
+            }
+        });
+
+        //Listener email
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateEditEmail(s);
+            }
+        });
+
+        //Listener password
+        password1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateEditPassword1(s);
+            }
+        });
+
+        //Listener password2
+        password2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateEditPassword2(s);
+            }
+        });
+
+
+        //Restrictions
+        name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && !name.isSelected()) {
+                    validateEditName(((EditText) v).getText());
+                }
+            }
+        });
+
+        surname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && !surname.isSelected()) {
+                    validateEditSurname(((EditText) v).getText());
+                }
+            }
+        });
+
+        nick.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && !nick.isSelected()) {
+                    validateEditNick(((EditText) v).getText());
+                }
+            }
+        });
+
+        email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && !email.isSelected()) {
+                    validateEditEmail(((EditText) v).getText());
+                }
+            }
+        });
+
+        password1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && !password1.isSelected()) {
+                    validateEditPassword1(((EditText) v).getText());
+                }
+            }
+        });
+
+        password2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && !password2.isSelected()) {
+                    validateEditPassword2(((EditText) v).getText());
+                }
+            }
+        });
+
+        sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
+        this.baseUrl = sharedPref.getString("url","51.38.237.252:3000" );
+        requestQueue = Volley.newRequestQueue(this);
+    }
+
+    //End OnCreate
+
+
+    //Errors
+    private void validateEditName(Editable s) {
+        if (!TextUtils.isEmpty(s)) {
+            ti_name.setError(null);
         } else {
-            sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
-            this.baseUrl = sharedPref.getString("url","192.168.1.38:3000" );
-            requestQueue = Volley.newRequestQueue(this);
+            ti_name.setError(getString(R.string.error_name));
         }
-
-
     }
 
+    private void validateEditSurname(Editable s) {
+        if (!TextUtils.isEmpty(s)) {
+            ti_surname.setError(null);
+        } else {
+            ti_surname.setError(getString(R.string.error_surname));
+        }
+    }
+
+    private void validateEditNick(Editable s) {
+        if (!TextUtils.isEmpty(s)) {
+            ti_nick.setError(null);
+        } else {
+            ti_nick.setError(getString(R.string.error_nick));
+        }
+    }
+
+    private void validateEditEmail(Editable s) {
+        if (!TextUtils.isEmpty(s)) {
+            ti_email.setError(null);
+        } else {
+            ti_email.setError(getString(R.string.error_email));
+        }
+    }
+
+    private void validateEditPassword1(Editable s) {
+        if (!TextUtils.isEmpty(s)) {
+            ti_password.setError(null);
+        } else {
+            ti_password.setError(getString(R.string.error_password));
+        }
+    }
+
+    private void validateEditPassword2(Editable s) {
+        if (!TextUtils.isEmpty(s)) {
+            ti_password2.setError(null);
+        } else {
+            ti_password2.setError(getString(R.string.error_password2));
+        }
+    }
+    //End errors
+
+    //Post to database
     private void postSignup(String name, String surname, String nick, String email, String password1) {
-        try {
-            this.url = "http://" + this.baseUrl + "/rateart_backend/user";
-            JSONObject jsonBody = new JSONObject();
-            jsonBody.put("name",name);
-            jsonBody.put("surname",surname);
-            jsonBody.put("nickname", nick);
-            jsonBody.put("email",email);
-            jsonBody.put("password", password1);
-            jsonBody.put("role","user");
 
-            final String requestBody = jsonBody.toString();
+            try {
+                this.url = "http://" + this.baseUrl + "/rateart_backend/user";
+                JSONObject jsonBody = new JSONObject();
+                jsonBody.put("name", name);
+                jsonBody.put("surname", surname);
+                jsonBody.put("nickname", nick);
+                jsonBody.put("email", email);
+                jsonBody.put("password", password1);
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Log.i("volley", response);
-                }
-            }, new Response.ErrorListener(){
-                @Override
-                public void onErrorResponse(VolleyError error){
-                    Log.e("volley", error.toString());
-                    onErrorSignup();
-                }
-            }){
-                @Override
-                public String getBodyContentType(){
-                    return "application/json; charset=utf-8";
-                }
-            };
-            requestQueue.add(stringRequest);
-        }catch (JSONException ex){
-            ex.printStackTrace();
-        }
+                final String requestBody = jsonBody.toString();
+
+                StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("volley", response);
+                        onOkSignup(response);
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("volley", error.toString());
+                        onErrorSignup();
+                    }
+                }) {
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8";
+                    }
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        try {
+                            return requestBody == null ? null : requestBody.getBytes("utf-8");
+                        }catch (UnsupportedEncodingException uee){
+                            VolleyLog.wtf("Unsuported encoding while trying to get bytes of %s using %s", requestBody, "utf8");
+                            return  null;
+                        }
+                    }
+                };
+                requestQueue.add(postRequest);
+            } catch (JSONException ex) {
+                ex.printStackTrace();
+            }
     }
 
-    public void trySignup(View v){
-        postSignup(name.getText().toString(), surname.getText().toString(), nick.getText().toString(), email.getText().toString(), password1.getText().toString());
+    public void trySignup(View v) {
+        while (!rbPrivacity.isChecked()) {
+            rbPrivacity.setTextColor(getResources().getColor(R.color.Red));
+        }
+        if (rbPrivacity.isChecked()) {
+            postSignup(name.getText().toString(), surname.getText().toString(), nick.getText().toString(), email.getText().toString(), password1.getText().toString());
+        }
     }
 
     public void onErrorSignup(){
 
         Snackbar.make(layout, R.string.error_signup,Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void onOkSignup(String response){
+        try {
+            JSONObject obj = new JSONObject((response));
+            Log.d("Nuevo usuario", response);
+
+            sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
+            editor=sharedPref.edit();
+
+            editor.putString("url", this.baseUrl);
+            editor.commit();
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }catch (JSONException ex){
+            Log.e("JSONParser", "Can't parse de string to a JSON");
+        }
     }
 }

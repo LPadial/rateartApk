@@ -8,6 +8,7 @@
     <string name="password">Password</string>
     <string name="login">Log in</string>
     <string name="description">Los mejores artistas dicen que el arte es invalorable... ¿Y tú? ¿Lo podrías valorar?</string>
+    <string name="emailOrNickname">Enter your email o nick</string>
 
     <!-- Strings related to signup -->
     <string name="name">Name</string>
@@ -16,6 +17,13 @@
     <string name="password2">Confirm password</string>
     <string name="register">Register</string>
     <string name="privacy">I agree to the terms of service</string>
+    <string name="error_name">You need to enter a name</string>
+    <string name="error_surname">You need to enter a surname</string>
+    <string name="error_nick">You need to enter a nick</string>
+    <string name="error_email">You need to enter a email</string>
+    <string name="error_password">You need to enter a password</string>
+    <string name="error_password2">You need to repeat your password</string>
+    <string name="error_password_not_match">The passwords must match</string>
 
 
     <!-- Strings related to login -->

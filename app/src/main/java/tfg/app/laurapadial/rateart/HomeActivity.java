@@ -1,14 +1,17 @@
 package tfg.app.laurapadial.rateart;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-class HomeActivity extends AppCompatActivity {
-    private static final HomeActivity ourInstance = new HomeActivity();
+public class HomeActivity extends AppCompatActivity {
 
-    static HomeActivity getInstance() {
-        return ourInstance;
-    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    private HomeActivity() {
+        Intent intent = new Intent(this, StartupActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

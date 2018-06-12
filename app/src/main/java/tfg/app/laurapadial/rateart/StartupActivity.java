@@ -1,13 +1,9 @@
 package tfg.app.laurapadial.rateart;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,8 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -40,9 +34,6 @@ public class StartupActivity extends AppCompatActivity {
     EditText etEmail;
     EditText etPassword;
     Button btnLogin;
-    Button btnSignup;
-    Button btFacebook;
-    TextView tvError;
 
     //Others elements
     SharedPreferences sharedPref;
@@ -53,18 +44,19 @@ public class StartupActivity extends AppCompatActivity {
     String baseUrl;
     String url;
 
+    //OnCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup);
 
-        this.btnLogin = (Button) findViewById(R.id.bt_login);
-        this.etEmail = (EditText) findViewById(R.id.et_email);
-        this.etPassword = (EditText) findViewById(R.id.et_password);
-        layout = (ConstraintLayout) findViewById(R.id.constraintLayout);
+        this.btnLogin = findViewById(R.id.bt_login);
+        this.etEmail = findViewById(R.id.et_email);
+        this.etPassword = findViewById(R.id.et_password);
+        layout = findViewById(R.id.constraintLayout);
         sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
 
-        this.baseUrl = sharedPref.getString("url","192.168.1.38:3000" );
+        this.baseUrl = sharedPref.getString("url","51.38.237.252:3000" );
 
         requestQueue = Volley.newRequestQueue(this);
     }
@@ -117,7 +109,7 @@ public class StartupActivity extends AppCompatActivity {
 
     public void onErrorLogin(){
 
-        Snackbar.make(layout, R.id.login_error,
+        Snackbar.make(layout, R.string.login,
                 Snackbar.LENGTH_SHORT)
                 .show();
     }
@@ -139,6 +131,12 @@ public class StartupActivity extends AppCompatActivity {
         }catch (JSONException ex){
             Log.e("JSONParser", "Can't parse de string to a JSON");
         }
+    }
+
+    public void onSignup(View v){
+        Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
 
