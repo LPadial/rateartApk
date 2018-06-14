@@ -83,12 +83,15 @@ public class SignupActivity extends AppCompatActivity{
         this.ti_email = findViewById(R.id.ti_email);
         this.ti_password = findViewById(R.id.ti_password);
         this.ti_password2 = findViewById(R.id.ti_password2);
-
+        ti_name.setErrorEnabled(true);
+        ti_surname.setErrorEnabled(true);
+        ti_nick.setErrorEnabled(true);
+        ti_email.setErrorEnabled(true);
+        ti_password.setErrorEnabled(true);
+        ti_password2.setErrorEnabled(true);
 
         this.btnRegister = findViewById(R.id.bt_register);
         this.rbPrivacity = findViewById(R.id.rb_privacidad);
-        this.layout = findViewById(R.id.layout);
-
         //Listener name
         name.addTextChangedListener(new TextWatcher() {
             @Override
@@ -376,7 +379,6 @@ public class SignupActivity extends AppCompatActivity{
     public void onOkSignup(String response){
         try {
             JSONObject obj = new JSONObject((response));
-            Log.d("Nuevo usuario", response);
 
             sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
             editor=sharedPref.edit();

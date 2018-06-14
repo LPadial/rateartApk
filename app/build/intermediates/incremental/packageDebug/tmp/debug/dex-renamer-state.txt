@@ -1,4 +1,4 @@
-#Tue Jun 12 10:04:45 CEST 2018
+#Tue Jun 12 19:13:44 CEST 2018
 path.3=classes.dex
 path.2=classes.dex
 path.1=classes.dex
@@ -7,7 +7,7 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.3=/home/laura-smile/StudioProjects/RateArt/app/build/intermediates/transforms/dexMerger/debug/14
-base.2=/home/laura-smile/StudioProjects/RateArt/app/build/intermediates/transforms/dexMerger/debug/11
-base.1=/home/laura-smile/StudioProjects/RateArt/app/build/intermediates/transforms/dexMerger/debug/13
-base.0=/home/laura-smile/StudioProjects/RateArt/app/build/intermediates/transforms/dexMerger/debug/12
+base.3=/home/laura-smile/StudioProjects/RateArt (copia 1)/app/build/intermediates/transforms/dexMerger/debug/29
+base.2=/home/laura-smile/StudioProjects/RateArt (copia 1)/app/build/intermediates/transforms/dexMerger/debug/31
+base.1=/home/laura-smile/StudioProjects/RateArt (copia 1)/app/build/intermediates/transforms/dexMerger/debug/28
+base.0=/home/laura-smile/StudioProjects/RateArt (copia 1)/app/build/intermediates/transforms/dexMerger/debug/30

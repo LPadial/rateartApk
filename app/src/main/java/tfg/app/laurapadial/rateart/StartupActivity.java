@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -28,9 +29,8 @@ import java.io.UnsupportedEncodingException;
 
 public class StartupActivity extends AppCompatActivity {
 
-    ConstraintLayout layout;
-
     //Elements layout activity_startup
+    LinearLayout linearLayout;
     EditText etEmail;
     EditText etPassword;
     Button btnLogin;
@@ -53,7 +53,7 @@ public class StartupActivity extends AppCompatActivity {
         this.btnLogin = findViewById(R.id.bt_login);
         this.etEmail = findViewById(R.id.et_email);
         this.etPassword = findViewById(R.id.et_password);
-        layout = findViewById(R.id.constraintLayout);
+        linearLayout = findViewById(R.id.linlayout);
         sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
 
         this.baseUrl = sharedPref.getString("url","51.38.237.252:3000" );
@@ -61,7 +61,7 @@ public class StartupActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
     }
 
-    private void postLogin(String email, String password) {
+    public void postLogin(String email, String password) {
         try {
             this.url = "http://" + this.baseUrl + "/rateart_backend/user/login";
             JSONObject jsonBody = new JSONObject();
@@ -109,9 +109,7 @@ public class StartupActivity extends AppCompatActivity {
 
     public void onErrorLogin(){
 
-        Snackbar.make(layout, R.string.login,
-                Snackbar.LENGTH_SHORT)
-                .show();
+        Snackbar.make(linearLayout, R.string.error_credentials, Snackbar.LENGTH_SHORT).show();
     }
 
     public void onOkLogin(String response){

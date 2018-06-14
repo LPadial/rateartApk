@@ -9,6 +9,7 @@
     <string name="login">Log in</string>
     <string name="description">Los mejores artistas dicen que el arte es invalorable... ¿Y tú? ¿Lo podrías valorar?</string>
     <string name="emailOrNickname">Enter your email o nick</string>
+    <string name="error_credentials">User or password are invalid</string>
 
     <!-- Strings related to signup -->
     <string name="name">Name</string>
@@ -39,4 +40,13 @@
         completions."
     </string>
     <string name="error_signup">Error al registrarse</string>
+
+
+    <!-- Strings related to home -->
+    <string name="upload">+</string>
+
+    <!-- Strings related to upload -->
+    <string name="title">Title</string>
+    <string name="desc">Description</string>
+
 </resources>
