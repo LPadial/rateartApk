@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/laura-smile/StudioProjects/RateArt (copia 1)/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "/home/laura-smile/StudioProjects/RateArt/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
                     "source": "/home/laura-smile/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8928c0fad50fd7045c0362336825954f/res/values-land/values-land.xml",

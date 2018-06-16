@@ -3,7 +3,6 @@ package tfg.app.laurapadial.rateart;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +25,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+
+import tfg.app.laurapadial.rateart.Home.HomeActivity;
 
 public class StartupActivity extends AppCompatActivity {
 
@@ -103,6 +104,7 @@ public class StartupActivity extends AppCompatActivity {
         }
     }
 
+    //Botón para loguearse
     public void tryLogin(View v){
         postLogin(etEmail.getText().toString(), etPassword.getText().toString());
     }
@@ -112,6 +114,7 @@ public class StartupActivity extends AppCompatActivity {
         Snackbar.make(linearLayout, R.string.error_credentials, Snackbar.LENGTH_SHORT).show();
     }
 
+    //Cuando el login es correcto se nos asigna un token
     public void onOkLogin(String response){
         try {
             JSONObject obj = new JSONObject((response));
@@ -131,6 +134,7 @@ public class StartupActivity extends AppCompatActivity {
         }
     }
 
+    //Botón para registrarse
     public void onSignup(View v){
         Intent intent = new Intent(this, SignupActivity.class);
         startActivity(intent);

@@ -32,7 +32,10 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
+import tfg.app.laurapadial.rateart.Home.HomeActivity;
+
 public class SignupActivity extends AppCompatActivity{
+    private static final String TAG = "SignupActivity";
 
 
     //Elements layout activity_signup
@@ -92,6 +95,7 @@ public class SignupActivity extends AppCompatActivity{
 
         this.btnRegister = findViewById(R.id.bt_register);
         this.rbPrivacity = findViewById(R.id.rb_privacidad);
+
         //Listener name
         name.addTextChangedListener(new TextWatcher() {
             @Override
@@ -315,53 +319,97 @@ public class SignupActivity extends AppCompatActivity{
     }
     //End errors
 
-    //Post to database
+    //Post user to database
     private void postSignup(String name, String surname, String nick, String email, String password1) {
 
-            try {
-                this.url = "http://" + this.baseUrl + "/rateart_backend/user";
-                JSONObject jsonBody = new JSONObject();
-                jsonBody.put("name", name);
-                jsonBody.put("surname", surname);
-                jsonBody.put("nickname", nick);
-                jsonBody.put("email", email);
-                jsonBody.put("password", password1);
+        try {
+            this.url = "http://" + this.baseUrl + "/rateart_backend/user";
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("name", name);
+            jsonBody.put("surname", surname);
+            jsonBody.put("nickname", nick);
+            jsonBody.put("email", email);
+            jsonBody.put("password", password1);
 
-                final String requestBody = jsonBody.toString();
+            final String requestBody = jsonBody.toString();
 
-                StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.i("volley", response);
-                        onOkSignup(response);
+            StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.i("volley", response);
+                    onOkSignup(response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("volley", error.toString());
+                    onErrorSignup();
+                }
+            }) {
+                @Override
+                public String getBodyContentType() {
+                    return "application/json; charset=utf-8";
+                }
+                @Override
+                public byte[] getBody() throws  AuthFailureError{
+                    try {
+                        return requestBody == null ? null : requestBody.getBytes("utf-8");
+                    }catch (UnsupportedEncodingException uee){
+                        VolleyLog.wtf("Unsuported encoding while trying to get bytes of %s using %s", requestBody, "utf8");
+                        return  null;
                     }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("volley", error.toString());
-                        onErrorSignup();
-                    }
-                }) {
-                    @Override
-                    public String getBodyContentType() {
-                        return "application/json; charset=utf-8";
-                    }
-                    @Override
-                    public byte[] getBody() throws AuthFailureError {
-                        try {
-                            return requestBody == null ? null : requestBody.getBytes("utf-8");
-                        }catch (UnsupportedEncodingException uee){
-                            VolleyLog.wtf("Unsuported encoding while trying to get bytes of %s using %s", requestBody, "utf8");
-                            return  null;
-                        }
-                    }
-                };
-                requestQueue.add(postRequest);
-            } catch (JSONException ex) {
-                ex.printStackTrace();
-            }
+                }
+            };
+            requestQueue.add(postRequest);
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
     }
 
+    public void postLogin(String email, String password) {
+        try {
+            this.url = "http://" + this.baseUrl + "/rateart_backend/user/login";
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("email",email);
+            jsonBody.put("password",password);
+            jsonBody.put("gethash", "true");
+            final String requestBody = jsonBody.toString();
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.i("volley", response);
+
+                }
+            }, new Response.ErrorListener(){
+                @Override
+                public void onErrorResponse(VolleyError error){
+                    Log.e("volley", error.toString());
+                    onErrorSignup();
+                }
+            }){
+                @Override
+                public String getBodyContentType(){
+                    return "application/json; charset=utf-8";
+                }
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    try {
+                        return requestBody == null ? null : requestBody.getBytes("utf-8");
+                    }catch (UnsupportedEncodingException uee){
+                        VolleyLog.wtf("Unsuported encoding while trying to get bytes of %s using %s", requestBody, "utf8");
+                        return  null;
+                    }
+                }
+            };
+            requestQueue.add(stringRequest);
+        }catch (JSONException ex){
+            ex.printStackTrace();
+        }
+    }
+
+
+    //Button to create user
     public void trySignup(View v) {
         while (!rbPrivacity.isChecked()) {
             rbPrivacity.setTextColor(getResources().getColor(R.color.Red));
@@ -376,20 +424,10 @@ public class SignupActivity extends AppCompatActivity{
         Snackbar.make(layout, R.string.error_signup,Snackbar.LENGTH_SHORT).show();
     }
 
+    //Al registrarse se añade el token
     public void onOkSignup(String response){
-        try {
-            JSONObject obj = new JSONObject((response));
-
-            sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
-            editor=sharedPref.edit();
-
-            editor.putString("url", this.baseUrl);
-            editor.commit();
-            Intent intent = new Intent(this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }catch (JSONException ex){
-            Log.e("JSONParser", "Can't parse de string to a JSON");
-        }
+        Intent intent = new Intent(this, StartupActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
