@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -44,27 +43,29 @@ public class StartupActivity extends AppCompatActivity {
 
     String baseUrl;
     String url;
+    String email;
+    String password;
+
 
     //OnCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup);
 
         this.btnLogin = findViewById(R.id.bt_login);
         this.etEmail = findViewById(R.id.et_email);
         this.etPassword = findViewById(R.id.et_password);
-        linearLayout = findViewById(R.id.linlayout);
-        sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
-
-        this.baseUrl = sharedPref.getString("url","51.38.237.252:3000" );
+        linearLayout = findViewById(R.id.linearLayout_startup);
 
         requestQueue = Volley.newRequestQueue(this);
     }
 
     public void postLogin(String email, String password) {
         try {
-            this.url = "http://" + this.baseUrl + "/rateart_backend/user/login";
+            initPreferences();
+            this.url = baseUrl + "user/login";
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("email",email);
             jsonBody.put("password",password);
@@ -74,13 +75,11 @@ public class StartupActivity extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Log.i("volley", response);
                     onOkLogin(response);
                 }
             }, new Response.ErrorListener(){
                 @Override
                 public void onErrorResponse(VolleyError error){
-                    Log.e("volley", error.toString());
                     onErrorLogin();
                 }
             }){
@@ -89,7 +88,7 @@ public class StartupActivity extends AppCompatActivity {
                     return "application/json; charset=utf-8";
                 }
                 @Override
-                public byte[] getBody() throws AuthFailureError{
+                public byte[] getBody(){
                     try {
                         return requestBody == null ? null : requestBody.getBytes("utf-8");
                     }catch (UnsupportedEncodingException uee){
@@ -118,19 +117,43 @@ public class StartupActivity extends AppCompatActivity {
     public void onOkLogin(String response){
         try {
             JSONObject obj = new JSONObject((response));
-            Log.i("TOKEN_ADQUIRED",obj.get("token").toString());
+            Log.i("TOKEN",obj.get("token").toString());
 
             sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
             editor=sharedPref.edit();
-
             editor.putString("user_token", obj.get("token").toString());
-            editor.putString("url", this.baseUrl);
+
+            if(sharedPref.getBoolean("isLogged", false) != true) {
+                editor.putBoolean("isLogged", true);
+            }
+            if(etEmail.getText()!=null) {
+                editor.putString("email", etEmail.getText().toString());
+            }
+            if(etPassword.getText()!=null) {
+                editor.putString("password", etPassword.getText().toString());
+            }
+
             editor.commit();
+
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
             finish();
+
         }catch (JSONException ex){
             Log.e("JSONParser", "Can't parse de string to a JSON");
+        }
+    }
+
+    public void initPreferences(){
+        sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
+        if(sharedPref.getString("url","") != "") {
+            this.baseUrl = sharedPref.getString("url", "");
+        }else {
+            this.baseUrl = "http://51.38.237.252:3000/rateart_backend/";
+            editor = sharedPref.edit();
+            editor.putString("url", "http://51.38.237.252:3000/rateart_backend/");
+            editor.commit();
+            finish();
         }
     }
 

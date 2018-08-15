@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,6 +39,23 @@
 
             <include layout="@layout/layout_center_viewpager"/>
 
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <!--<ImageView
+                android:layout_width="192dp"
+                android:layout_height="49dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="40dp"
+                android:layout_marginTop="518dp"
+                android:src="@drawable/nombre_rateart" />-->
+            <include layout="@layout/snippet_footer_bar"/>
 
         </RelativeLayout>
 

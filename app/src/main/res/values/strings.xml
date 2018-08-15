@@ -5,17 +5,26 @@
     <string name="signup">Sign up</string>
     <string name="facebook">Log in with Facebook</string>
     <string name="email">Email</string>
+    <string name="emailtext">Email o nick:</string>
+    <string name="passwordtext">Password:</string>
     <string name="password">Password</string>
     <string name="login">Log in</string>
     <string name="description">Los mejores artistas dicen que el arte es invalorable... ¿Y tú? ¿Lo podrías valorar?</string>
     <string name="emailOrNickname">Enter your email o nick</string>
     <string name="error_credentials">User or password are invalid</string>
+    <string name="registerStatement">Don\'t have an account?</string>
+    <string name="loginStatement">Do you want start to rating?</string>
 
     <!-- Strings related to signup -->
     <string name="name">Name</string>
+    <string name="nametext">Name:</string>
     <string name="surname">Surname</string>
+    <string name="surnametext">Surname:</string>
     <string name="nick">Nick name</string>
+    <string name="nicktext">Nick name:</string>
     <string name="password2">Confirm password</string>
+    <string name="password2text">Confirm password:</string>
+    <string name="emailtext1">Email:</string>
     <string name="register">Register</string>
     <string name="privacy">I agree to the terms of service</string>
     <string name="error_name">You need to enter a name</string>
@@ -25,6 +34,8 @@
     <string name="error_password">You need to enter a password</string>
     <string name="error_password2">You need to repeat your password</string>
     <string name="error_password_not_match">The passwords must match</string>
+    <string name="error_terms">You must accept the terms</string>
+    <string name="logo">Logo</string>
 
 
     <!-- Strings related to login -->
@@ -47,6 +58,17 @@
 
     <!-- Strings related to upload -->
     <string name="title">Title</string>
+    <string name="titleText">Title:</string>
     <string name="desc">Description</string>
+    <string name="descText">Description:</string>
+    <string name="img">Imagen</string>
+    <string name="error_upload_post">Error to upload the post</string>
+    <string name="upload_post">Tu post se ha añadido correctamente</string>
+
+    <!-- Strings related to profile -->
+    <string name="logout">Logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

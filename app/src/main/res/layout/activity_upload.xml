@@ -1,62 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Scrollbar -->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Upload.UploadActivity">
-
-    <!-- Para alinear los campos hacia abajo -->
-    <LinearLayout
-        android:id="@+id/linlayoutUpload"
+    android:id="@+id/layout_upload">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- Para centrar los campos -->
+        android:layout_height="wrap_content">
         <RelativeLayout
+            android:id="@+id/relLayoutUp1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Nos traemos la imagen y la mostramos aquí-->
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="282dp"
-                android:layout_height="179dp"
-                android:layout_centerInParent="true"
-                app:srcCompat="@android:drawable/ic_menu_camera" />
+            <include
+                layout="@layout/layout_top_tabs" />
+
+            <include layout="@layout/layout_center_upload" />
 
         </RelativeLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
-        <!-- Escribe el título -->
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/ti_titleUp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <!--<ImageView
+            android:layout_width="192dp"
+            android:layout_height="49dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:paddingLeft="40dp"
+            android:layout_marginTop="518dp"
+            android:src="@drawable/nombre_rateart" />-->
+        <include layout="@layout/snippet_footer_bar"/>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/et_titleUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/title" />
-        </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
 
-        <!-- Escribe la descripción -->
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/ti_descUp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/et_descUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/desc" />
-        </android.support.design.widget.TextInputLayout>
-
-        <!-- Botón de subida -->
-
-
-    </LinearLayout>
-</ScrollView>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,109 +1,103 @@
-<merge xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<merge
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:orientation="vertical"
+        android:id="@+id/layout_profile_top">
 
-
-        <TextView
-            android:id="@+id/tvPosts"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout_profile"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="250"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:weightSum="100">
 
-        <TextView
-            android:id="@+id/textPosts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Posts"
-            android:textSize="12sp"
-            android:layout_marginTop="-8dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvPosts"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="33"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvFollowers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="300"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="2dp"
-            app:layout_constraintRight_toLeftOf="@+id/tvFollowing"
-            android:layout_marginRight="8dp"
-            app:layout_constraintLeft_toRightOf="@+id/tvPosts"
-            android:layout_marginLeft="8dp"
-            />
+                <TextView
+                    android:id="@+id/tvPosts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/textFollowers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Followers"
-            android:textSize="12sp"
-            android:layout_marginTop="-8dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvFollowers"
-            app:layout_constraintLeft_toRightOf="@+id/textPosts"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintRight_toLeftOf="@+id/textFollolwing"
-            android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.526"/>
+                <TextView
+                    android:id="@+id/textPosts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Posts"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/tvFollowing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="400"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"/>
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/textFollolwing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Following"
-            android:textSize="12sp"
-            android:layout_marginTop="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvFollowing"
-            android:layout_marginRight="-22dp"
-            app:layout_constraintRight_toRightOf="parent"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="33"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textEditProfile"
-            android:layout_width="156dp"
-            android:layout_height="18dp"
-            android:text="Edit your profile"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/textFollowers"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintVertical_bias="0.0"
-            android:textAlignment="center"
-            android:background="@drawable/grey_border"/>
-    </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tvAvgRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    />
 
+                <TextView
+                    android:id="@+id/textAvgRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Score"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="33"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvPosRanking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/textPosRanking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Ranking"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </merge>

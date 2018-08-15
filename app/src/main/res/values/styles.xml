@@ -5,8 +5,8 @@
         <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/Red</item>
     </style>
 
 </resources>

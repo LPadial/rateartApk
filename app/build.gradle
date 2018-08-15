@@ -1,31 +1,56 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'keyRateArt'
+            keyPassword 'rateArtTfg123456789'
+            storeFile file('/home/laura-smile/rateart_keystore.jks')
+            storePassword 'rateArtTfg123456789'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "tfg.app.laurapadial.rateart"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.mcxiaoke.volley:library:1.0.+'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'org.apache.httpcomponents:httpmime:4.5.5'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.9'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
 }

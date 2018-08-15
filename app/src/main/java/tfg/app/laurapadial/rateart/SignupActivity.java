@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -26,13 +27,13 @@ import com.android.volley.toolbox.Volley;
 import android.text.TextWatcher;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
-import tfg.app.laurapadial.rateart.Home.HomeActivity;
 
 public class SignupActivity extends AppCompatActivity{
     private static final String TAG = "SignupActivity";
@@ -47,7 +48,6 @@ public class SignupActivity extends AppCompatActivity{
     EditText password2;
 
     Button btnRegister;
-    RadioButton rbPrivacity;
     ConstraintLayout layout;
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
@@ -94,7 +94,6 @@ public class SignupActivity extends AppCompatActivity{
         ti_password2.setErrorEnabled(true);
 
         this.btnRegister = findViewById(R.id.bt_register);
-        this.rbPrivacity = findViewById(R.id.rb_privacidad);
 
         //Listener name
         name.addTextChangedListener(new TextWatcher() {
@@ -336,13 +335,13 @@ public class SignupActivity extends AppCompatActivity{
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Log.i("volley", response);
+                    Log.i(TAG+ "volley", response);
                     onOkSignup(response);
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.e("volley", error.toString());
+                    Log.e(TAG+"volley", error.toString());
                     onErrorSignup();
                 }
             }) {
@@ -366,57 +365,9 @@ public class SignupActivity extends AppCompatActivity{
         }
     }
 
-    public void postLogin(String email, String password) {
-        try {
-            this.url = "http://" + this.baseUrl + "/rateart_backend/user/login";
-            JSONObject jsonBody = new JSONObject();
-            jsonBody.put("email",email);
-            jsonBody.put("password",password);
-            jsonBody.put("gethash", "true");
-            final String requestBody = jsonBody.toString();
-
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Log.i("volley", response);
-
-                }
-            }, new Response.ErrorListener(){
-                @Override
-                public void onErrorResponse(VolleyError error){
-                    Log.e("volley", error.toString());
-                    onErrorSignup();
-                }
-            }){
-                @Override
-                public String getBodyContentType(){
-                    return "application/json; charset=utf-8";
-                }
-                @Override
-                public byte[] getBody() throws AuthFailureError {
-                    try {
-                        return requestBody == null ? null : requestBody.getBytes("utf-8");
-                    }catch (UnsupportedEncodingException uee){
-                        VolleyLog.wtf("Unsuported encoding while trying to get bytes of %s using %s", requestBody, "utf8");
-                        return  null;
-                    }
-                }
-            };
-            requestQueue.add(stringRequest);
-        }catch (JSONException ex){
-            ex.printStackTrace();
-        }
-    }
-
-
     //Button to create user
     public void trySignup(View v) {
-        while (!rbPrivacity.isChecked()) {
-            rbPrivacity.setTextColor(getResources().getColor(R.color.Red));
-        }
-        if (rbPrivacity.isChecked()) {
-            postSignup(name.getText().toString(), surname.getText().toString(), nick.getText().toString(), email.getText().toString(), password1.getText().toString());
-        }
+        postSignup(name.getText().toString(), surname.getText().toString(), nick.getText().toString(), email.getText().toString(), password1.getText().toString());
     }
 
     public void onErrorSignup(){

@@ -2,7 +2,8 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/layout_profile">
 
     <RelativeLayout
         android:id="@+id/relLayout1"
@@ -13,12 +14,21 @@
 
         <include layout="@layout/layout_center_profile" />
 
-        <ProgressBar
-            android:id="@+id/profileProgressBar"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_width="192dp"
+            android:layout_height="49dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:paddingLeft="40dp"
+            android:layout_marginTop="518dp"
+            android:src="@drawable/nombre_rateart" />
 
     </RelativeLayout>
 
