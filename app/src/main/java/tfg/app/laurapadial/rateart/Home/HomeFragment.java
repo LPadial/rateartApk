@@ -53,17 +53,6 @@ public class HomeFragment extends Fragment{
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         requestQueue = Volley.newRequestQueue(getContext());
-        /*mImageLoader= new ImageLoader(requestQueue, new ImageLoader.ImageCache() {
-            private final LruCache<String, Bitmap> mCache = new LruCache<>(10);
-
-            public void putBitmap(String url, Bitmap bitmap) {
-                mCache.put(url, bitmap);
-            }
-
-            public Bitmap getBitmap(String url) {
-                return mCache.get(url);
-            }
-        });*/
         getPosts();
         return view;
     }
@@ -102,8 +91,6 @@ public class HomeFragment extends Fragment{
                                     myFrag.titulo = response.getJSONObject(i).getString("title");
                                     myFrag.description = response.getJSONObject(i).getString("description");
                                     myFrag.user = response.getJSONObject(i).getJSONObject("user").getString("name");
-                                    //myFrag.url_foto = "http://51.38.237.252:3000/rateart_backend/image/"+ id_post;
-                                    //myFrag.mImageLoader = mImageLoader;
 
                                 } catch (JSONException e) {
                                     Log.d(TAG, "onCreateView: "+e.toString());

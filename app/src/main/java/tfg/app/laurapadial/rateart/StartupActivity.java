@@ -105,7 +105,15 @@ public class StartupActivity extends AppCompatActivity {
 
     //Botón para loguearse
     public void tryLogin(View v){
-        postLogin(etEmail.getText().toString(), etPassword.getText().toString());
+        if(etEmail.getText().toString().equals("") && etPassword.getText().toString().equals("")){
+            Snackbar.make(linearLayout,R.string.error_fields_required,Snackbar.LENGTH_SHORT).show();
+        }else if(etEmail.getText().toString().equals("")) {
+            Snackbar.make(linearLayout,R.string.emailOrNickname,Snackbar.LENGTH_SHORT).show();
+        }else if(etPassword.getText().toString().equals("")) {
+            Snackbar.make(linearLayout, R.string.errorPassword, Snackbar.LENGTH_SHORT).show();
+        }else{
+            postLogin(etEmail.getText().toString(), etPassword.getText().toString());
+        }
     }
 
     public void onErrorLogin(){
@@ -123,13 +131,13 @@ public class StartupActivity extends AppCompatActivity {
             editor=sharedPref.edit();
             editor.putString("user_token", obj.get("token").toString());
 
-            if(sharedPref.getBoolean("isLogged", false) != true) {
+            if(sharedPref.getBoolean("isLogged", false)) {
                 editor.putBoolean("isLogged", true);
             }
-            if(etEmail.getText()!=null) {
+            if(!etEmail.getText().toString().equals("")) {
                 editor.putString("email", etEmail.getText().toString());
             }
-            if(etPassword.getText()!=null) {
+            if(!etPassword.getText().toString().equals("")) {
                 editor.putString("password", etPassword.getText().toString());
             }
 
@@ -146,7 +154,7 @@ public class StartupActivity extends AppCompatActivity {
 
     public void initPreferences(){
         sharedPref= getSharedPreferences("rateart", Context.MODE_PRIVATE);
-        if(sharedPref.getString("url","") != "") {
+        if(!sharedPref.getString("url","").equals("")) {
             this.baseUrl = sharedPref.getString("url", "");
         }else {
             this.baseUrl = "http://51.38.237.252:3000/rateart_backend/";

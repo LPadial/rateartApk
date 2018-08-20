@@ -10,11 +10,10 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tabs"
                 android:background="@drawable/blue_top_bar">
-
 
             </android.support.design.widget.TabLayout>
 

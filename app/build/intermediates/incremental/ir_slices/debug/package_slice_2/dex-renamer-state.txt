@@ -1,4 +1,4 @@
-#Tue Aug 14 18:40:46 CEST 2018
-base.0=/home/laura-smile/StudioProjects/RateArt/app/build/intermediates/transforms/dexMerger/debug/3
+#Mon Aug 20 17:06:34 CEST 2018
+base.0=/home/laura-smile/StudioProjects/RateArt/app/build/intermediates/transforms/dexMerger/debug/20
 path.0=classes.dex
 renamed.0=classes.dex

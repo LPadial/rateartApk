@@ -2,26 +2,23 @@ package tfg.app.laurapadial.rateart.Home;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -41,26 +38,12 @@ public class PostProfileFragment extends Fragment{
     public RatingBar mRatingBar;
     public ImageView iv_foto_post;
     public View view;
-    public String titulo, description, url_foto, id_post;
+    public String titulo, description, id_post;
 
     public SharedPreferences sharedPref;
     public String token, url;
     public RequestQueue avgRatingPostQueue;
     public boolean ratingCalified;
-   /* public RequestQueue requestQueue;
-
-    public ImageLoader mImageLoader= new ImageLoader(requestQueue, new ImageLoader.ImageCache() {
-        private final LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>(10);
-
-        public void putBitmap(String url, Bitmap bitmap) {
-            mCache.put(url, bitmap);
-        }
-
-        public Bitmap getBitmap(String url) {
-            return mCache.get(url);
-        }
-    });*/
-
 
     @Nullable
     @Override
@@ -82,13 +65,12 @@ public class PostProfileFragment extends Fragment{
         Glide.with(this)
                 .load("http://51.38.237.252:3000/rateart_backend/image/"+ id_post)
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.ic_palette)
+                        .placeholder(R.drawable.logo_rateart)
                         .centerCrop()
                         .dontAnimate()
                         .dontTransform())
                 .into(iv_foto_post);
 
-        //iv_foto_post.setImageUrl(url_foto, mImageLoader);
         tv_title.setText(titulo);
         tv_description.setText(description);
         getAvgRating(id_post);
@@ -96,8 +78,12 @@ public class PostProfileFragment extends Fragment{
     }
 
     public void initPreferences(){
-        sharedPref = this.getActivity().getSharedPreferences("rateart", Context.MODE_PRIVATE);
-        this.token = sharedPref.getString("user_token", "");
+        try {
+            sharedPref = this.getActivity().getSharedPreferences("rateart", Context.MODE_PRIVATE);
+            this.token = sharedPref.getString("user_token", "");
+        }catch(NullPointerException e){
+            Toast.makeText(this.requireContext(),"Error",Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void getAvgRating(String id_post){
@@ -110,9 +96,8 @@ public class PostProfileFragment extends Fragment{
                     public void onResponse(JSONArray response) {
                         try {
                             Log.i(TAG, response.getJSONObject(0).getString("average"));
-                            if (response != null) {
-                                mRatingBar.setRating(Float.parseFloat(response.getJSONObject(0).getString("average")));
-                            }
+                            mRatingBar.setRating(Float.parseFloat(response.getJSONObject(0).getString("average")));
+
                         }catch(JSONException e){
                             Log.d(TAG, "onCreateView: "+ e.toString());
                         }
@@ -126,7 +111,7 @@ public class PostProfileFragment extends Fragment{
 
             @Override
             public Map<String, String> getHeaders(){
-                HashMap<String, String> headers = new HashMap<String, String>();
+                HashMap<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
                 headers.put("Authorization", token);
                 return headers;

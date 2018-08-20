@@ -40,6 +40,7 @@ public class HomeActivity extends AppCompatActivity{
     }
 
     private void setupViewPager(){
+
         this.adapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new UploadFragment());
@@ -50,11 +51,24 @@ public class HomeActivity extends AppCompatActivity{
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
+
+        View view1 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view1.findViewById(R.id.icon).setBackgroundResource(R.drawable.icon_upload);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view1));
+
+        View view2 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view2.findViewById(R.id.icon).setBackgroundResource(R.drawable.icon_home);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view2));
+
+        View view3 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view3.findViewById(R.id.icon).setBackgroundResource(R.drawable.icon_profile);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view3));
+
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.icon_upload);
-        tabLayout.getTabAt(1).setIcon(R.drawable.icon_home);
-        tabLayout.getTabAt(2).setIcon(R.drawable.icon_profile);
+        tabLayout.getTabAt(0).setIcon(R.mipmap.ic_upload);
+        tabLayout.getTabAt(1).setIcon(R.mipmap.ic_rateart);
+        tabLayout.getTabAt(2).setIcon(R.mipmap.ic_profile);
 
         viewPager.setCurrentItem(1);
     }

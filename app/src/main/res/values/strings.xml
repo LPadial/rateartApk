@@ -5,12 +5,13 @@
     <string name="signup">Sign up</string>
     <string name="facebook">Log in with Facebook</string>
     <string name="email">Email</string>
-    <string name="emailtext">Email o nick:</string>
+    <string name="emailtext">Email or nick:</string>
     <string name="passwordtext">Password:</string>
     <string name="password">Password</string>
     <string name="login">Log in</string>
-    <string name="description">Los mejores artistas dicen que el arte es invalorable... ¿Y tú? ¿Lo podrías valorar?</string>
-    <string name="emailOrNickname">Enter your email o nick</string>
+    <string name="description">The best artists say that art is invaluable ... And you? Could you rate it?</string>
+    <string name="emailOrNickname">Enter your email or nick</string>
+    <string name="errorPassword">Enter your password</string>
     <string name="error_credentials">User or password are invalid</string>
     <string name="registerStatement">Don\'t have an account?</string>
     <string name="loginStatement">Do you want start to rating?</string>
@@ -47,10 +48,11 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="error_fields_required">These fields are required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="error_signup">Error al registrarse</string>
+    <string name="error_signup">Registration failed</string>
 
 
     <!-- Strings related to home -->
@@ -61,14 +63,22 @@
     <string name="titleText">Title:</string>
     <string name="desc">Description</string>
     <string name="descText">Description:</string>
-    <string name="img">Imagen</string>
+    <string name="img">Image</string>
     <string name="error_upload_post">Error to upload the post</string>
-    <string name="upload_post">Tu post se ha añadido correctamente</string>
+    <string name="upload_post">Your post has been added correctly</string>
+    <string name="errorFields">You must complete all the fields</string>
 
     <!-- Strings related to profile -->
-    <string name="logout">Logout</string>
+    <string name="logout">⇪</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="valoracionMedia">Average Rating: </string>
+    <string name="valora">Rate the image: </string>
+    <string name="score">Score</string>
+    <string name="error_exists_email">This email already exists</string>
+    <string name="error_exists_nickname">This nick already exists</string>
+
 
 </resources>

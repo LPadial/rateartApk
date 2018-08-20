@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-37:12
-INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-37:12
-INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-37:12
-INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-37:12
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-38:12
+INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-38:12
+INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-38:12
+INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-38:12
 MERGED from [com.android.support:design:27.1.1] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8928c0fad50fd7045c0362336825954f/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ca81224754eef154f78246c2b0917a12/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-v4:27.1.1] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3dd2637b19a5bbcb21448769717e5ed2/AndroidManifest.xml:17:1-22:12
@@ -24,20 +24,20 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/laura-smile/.grad
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/d25954d755e4cf4d6bf75a5f3f02c258/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/51786bc0f0c4faa291c16106ae2fa87b/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/7758a7c2e2958133db09e368abc99828/AndroidManifest.xml:17:1-22:12
-INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-37:12
-INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-37:12
-INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-37:12
+INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-38:12
+INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-38:12
+INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-38:12
 	package
 		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:3:5-42
 		INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml
 		INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-37:12
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-38:12
 		INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-37:12
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:1-38:12
 		INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:2:11-69
@@ -49,14 +49,18 @@ uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:6:5-80
 	android:name
 		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:6:22-77
-uses-feature#android.hardware.camera
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:7:5-84
-	android:required
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:7:58-81
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:7:5-81
 	android:name
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:7:19-57
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:7:22-78
+uses-feature#android.hardware.camera
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:8:5-84
+	android:required
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:8:58-81
+	android:name
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:8:19-57
 application
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:10:5-35:19
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:11:5-36:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/3f184c119357787e83e2bae43826d6c3/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/3f184c119357787e83e2bae43826d6c3/AndroidManifest.xml:9:5-20
 MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/circleimageview-2.2.0.aar/ceb1f67d566e611500c463f1071bdecb/AndroidManifest.xml:9:5-20
@@ -66,53 +70,53 @@ MERGED from [com.github.bumptech.glide:glide:4.7.1] /home/laura-smile/.gradle/ca
 MERGED from [com.github.bumptech.glide:gifdecoder:4.7.1] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.7.1.aar/b14f562613b47076c39781cc67731f2b/AndroidManifest.xml:9:5-20
 MERGED from [com.github.bumptech.glide:gifdecoder:4.7.1] /home/laura-smile/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.7.1.aar/b14f562613b47076c39781cc67731f2b/AndroidManifest.xml:9:5-20
 	android:supportsRtl
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:16:9-35
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:14:9-41
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:15:9-41
 	android:hardwareAccelerated
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:18:9-44
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:19:9-44
 	android:roundIcon
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:15:9-51
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:16:9-51
 	android:largeHeap
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:19:9-33
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:20:9-33
 	android:icon
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:13:9-46
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:14:9-46
 	android:allowBackup
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:12:9-35
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:17:9-40
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:18:9-40
 	android:name
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:11:9-38
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:12:9-38
 activity#tfg.app.laurapadial.rateart.SplashActivity
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:20:9-27:20
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:21:9-28:20
 	android:label
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:22:13-45
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:23:13-45
 	android:name
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:21:13-43
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:22:13-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:23:13-26:29
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:24:13-27:29
 action#android.intent.action.MAIN
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:24:17-69
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:24:25-66
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:25:17-77
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:25:27-74
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:26:27-74
 activity#tfg.app.laurapadial.rateart.SignupActivity
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:29:9-51
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:30:9-51
 	android:name
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:29:19-49
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:30:19-49
 activity#tfg.app.laurapadial.rateart.Home.HomeActivity
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:30:9-31:51
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:31:9-32:51
 	android:screenOrientation
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:31:13-49
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:32:13-49
 	android:name
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:30:19-52
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:31:19-52
 activity#tfg.app.laurapadial.rateart.StartupActivity
-ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:32:9-52
+ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:33:9-52
 	android:name
-		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:32:19-50
+		ADDED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml:33:19-50
 uses-sdk
 INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/laura-smile/StudioProjects/RateArt/app/src/main/AndroidManifest.xml

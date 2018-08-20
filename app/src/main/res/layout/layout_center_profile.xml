@@ -12,21 +12,14 @@
             android:id="@+id/relLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:background="@color/Red">
 
             <LinearLayout
                 android:id="@+id/linLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!--<TextView
-                    android:id="@+id/display_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Name user"
-                    android:textSize="18dp"
-                    android:textStyle="bold"/>-->
+                android:orientation="vertical"
+                android:background="@color/Red">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -65,13 +58,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/fragmentProfile_LinearLayout"
-                />
+                android:id="@+id/fragmentProfile_LinearLayout">
 
+            </LinearLayout>
 
         </ScrollView>
-
-
     </RelativeLayout>
 
 </merge>

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -39,7 +40,7 @@ public class ProfileFragment extends Fragment {
     public TextView avgRateGlobal;
     public TextView posRanking;
     public TextView name;
-    public Button logout;
+    public ImageButton logout;
 
     private int fragCount = 0;
     public ArrayList<String> listFrag = new ArrayList<>();

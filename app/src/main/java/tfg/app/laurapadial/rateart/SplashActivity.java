@@ -102,12 +102,8 @@ public class SplashActivity extends Activity {
 
     public void initPreferences(){
         sharedPref= getSharedPreferences("rateart", 0);
-        if(sharedPref.getString("url","")!=null) {
-            this.baseUrl = sharedPref.getString("url", "");
-        }else {
-            this.baseUrl = "http://51.38.237.252:3000/rateart_backend/";
-            editor.putString("url", "http://51.38.237.252:3000/rateart_backend/");
-        }
+        this.baseUrl = "http://51.38.237.252:3000/rateart_backend/";
+
         if(sharedPref.getString("token","")!=null) {
             if(sharedPref.getString("email","")!=null && sharedPref.getString("password","")!=null) {
                 this.email = sharedPref.getString("email","");

@@ -47,26 +47,13 @@ public class PostFragment extends Fragment{
     public RatingBar mRatingBar;
     public ImageView iv_foto_post;
     public View view;
-    public String titulo, description, user, url_foto;
+    public String titulo, description, user;
 
     public SharedPreferences sharedPref;
     public String token, url, id_post;
     public RequestQueue ratingQueue;
     public RequestQueue ratingPostQueue;
     public boolean ratingCalified;
-
-    /*public RequestQueue requestQueue;
-    public ImageLoader mImageLoader= new ImageLoader(requestQueue, new ImageLoader.ImageCache() {
-        private final LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>(10);
-
-        public void putBitmap(String url, Bitmap bitmap) {
-            mCache.put(url, bitmap);
-        }
-
-        public Bitmap getBitmap(String url) {
-            return mCache.get(url);
-        }
-    });*/
 
 
     @Nullable
@@ -89,13 +76,12 @@ public class PostFragment extends Fragment{
         Glide.with(this)
                 .load("http://51.38.237.252:3000/rateart_backend/image/"+ id_post)
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.ic_palette)
+                        .placeholder(R.drawable.logo_rateart)
                         .centerCrop()
                         .dontAnimate()
                         .dontTransform())
                 .into(iv_foto_post);
 
-        //iv_foto_post.setImageUrl(url_foto, mImageLoader);
         mRatingBar = view.findViewById(R.id.ratingBar);
         getRating(id_post);
         mRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {

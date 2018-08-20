@@ -16,20 +16,4 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <ImageView
-            android:layout_width="192dp"
-            android:layout_height="49dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:paddingLeft="40dp"
-            android:layout_marginTop="518dp"
-            android:src="@drawable/nombre_rateart" />
-
-    </RelativeLayout>
-
 </android.support.design.widget.CoordinatorLayout>

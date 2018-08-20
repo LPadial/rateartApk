@@ -5,7 +5,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/layout_profile_top">
+        android:id="@+id/layout_profile_top"
+        android:background="@color/Red">
 
         <LinearLayout
             android:id="@+id/linearLayout_profile"
@@ -63,7 +64,7 @@
                     android:id="@+id/textAvgRate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Score"
+                    android:text="@string/score"
                     android:textSize="20sp"
                     android:layout_gravity="center"
                     android:textColor="@color/white"
@@ -95,6 +96,14 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
             </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/logout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="logout"
+                android:src="@drawable/ic_logout" />
 
         </LinearLayout>
 
