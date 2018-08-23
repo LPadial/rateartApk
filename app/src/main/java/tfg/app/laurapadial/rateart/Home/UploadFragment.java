@@ -323,7 +323,7 @@ public class UploadFragment extends Fragment{
 
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
             yourKey = generateKey();
-            postKey(yourKey,filePath);
+            postKey(yourKey,file.getAbsolutePath());
 
             byte[] filesBytes = encodeFile(yourKey, stringToSave);
             bos.write(filesBytes);
